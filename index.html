@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday 💖</title>
+</head>
+<body>
+
+  <style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+}
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+button {
+  margin-top: 20px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #ff6f91;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;   /* 👈 THIS changes the cursor */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+}
+.candle {
+  display: inline-block;
+  transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.candle.blow {
+  transform: translateY(-20px);
+  opacity: 0;
+  filter: blur(0.5px);
+}
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  opacity: 0.6;
+  animation: floatUp 6s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh);
+    opacity: 0;
+  }
+}
+#finalText {
+  white-space: pre-wrap;   /* 👈 preserves new lines & spacing */
+}
+#screen5 {
+  max-height: 70vh;
+  overflow-y: auto;
+}
+#finalText {
+  font-style: italic;
+  font-size: 15px;
+}
+#finalText {
+  letter-spacing: 0.3px;
+}
+video {
+  width: 100%;
+  height: auto;           /* keeps original ratio */
+  max-height: 50vh;       /* never exceeds screen */
+  border-radius: 12px;
+}
+
+.photo-big {
+  width: 70%;
+  max-width: 260px;
+  height: auto;          /* keep ratio */
+  border-radius: 14px;
+}
+
+
+
+
+
+</style>
+
+<div class="card">
+
+  <!-- SCREEN 1 -->
+  <div id="screen1">
+    <h2>Hey Ruchika 🌸</h2>
+    <h5>(aka Ms. Syal aka Book Nerd aka Ruhii)</h5>
+    <p>Since someone special has a birthday today.</p>
+    <p>And I was not allowed to send any gift,</p>
+    <p>Here's still a very small gift but not gift.</p>
+    <button onclick="goToScreen(2)">Click to start 🎁</button>
+  </div>
+
+  <!-- SCREEN 2 -->
+  <div id="screen2" style="display:none;">
+    <h2>Happppyyyy Birthdayyyyyy ✨</h2>
+    <p>I hope today brings you calm moments and soft smiles.</p>
+    <button onclick="goToScreen(3)">Next 💕</button>
+  </div>
+
+  <!-- SCREEN 3 -->
+  <div id="screen3" style="display:none;">
+    <h3>Okay before we move forward</h3>
+    <h2>✨MAKE A WISH✨</h2>
+    <h4>Yes, do it. Close your eyes and make a wish.</h4>
+
+    <div id="cake" style="font-size:70px; margin:20px 0;">
+      <span class="candle">🕯️</span>
+      🎂
+      <span class="candle">🕯️</span>
+    </div>
+
+    <p>Done? Now blow out the candles...really! (or just click below). ✨</p>
+    <button onclick="blowCandles()">Blow 🎉</button>
+  </div>
+
+  <!-- SCREEN 4 -->
+  <div id="screen4" style="display:none;">
+    <h2>One small question 💭</h2>
+    <p>What should today have more of?</p>
+
+
+    <button onclick="goToScreen(6)">A sweet memory 😊</button>
+    <button onclick="goToScreen(7)">See yourself 💕</button>
+    <button onclick="goToScreen(5)">A message 🤍</button>
+
+  </div>
+
+  <!-- SCREEN 5 -->
+<div id="screen5" style="display:none; text-align:left; line-height:1.6;">
+  <h2 style="text-align:center;">🤍</h2>
+
+  <div id="finalText"></div>
+
+  <div style="text-align:center; margin-top:30px;">
+    <button onclick="restart()">🔄 Start Again</button>
+  </div>
+</div>
+
+<!-- SCREEN 6 -->
+<div id="screen6" style="display:none;">
+  <h2>A sweet memory 😊</h2>
+
+  <video controls style="width:100%; border-radius:12px;">
+    <source src="memory.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <button onclick="goToScreen(4)">⬅ Back</button>
+</div>
+
+<!-- SCREEN 7 -->
+<div id="screen7" style="display:none;">
+  <h2>See yourself 💕</h2>
+
+<div style="display:flex; justify-content:center;">
+  <img src="pic1.jpeg" class="photo-big">
+</div>
+
+
+  <button onclick="goToScreen(4)">⬅ Back</button>
+</div>
+
+
+
+<script>
+function goToScreen(number) {
+  document.getElementById("screen1").style.display = "none";
+  document.getElementById("screen2").style.display = "none";
+  document.getElementById("screen3").style.display = "none";
+  document.getElementById("screen4").style.display = "none";
+  document.getElementById("screen5").style.display = "none";
+  document.getElementById("screen6").style.display = "none";
+  document.getElementById("screen7").style.display = "none";
+
+  document.getElementById("screen" + number).style.display = "block";
+
+  if (number === 5) {
+    document.getElementById("finalText").innerText = "";
+    index = 0;
+    typeFinalMessage();
+  }
+}
+
+
+
+function blowCandles() {
+  const candles = document.querySelectorAll(".candle");
+
+  // Animate candles
+  candles.forEach(candle => {
+    candle.classList.add("blow");
+  });
+
+  // Remove candles after animation
+  setTimeout(() => {
+    document.getElementById("cake").innerHTML = "🎂";
+  }, 600);
+
+  // Move to next screen
+  setTimeout(() => {
+    goToScreen(4);
+  }, 1200);
+}
+function restart() {
+  goToScreen(1);
+}
+const finalMessage = `
+Hey Ruchika, Happy Birthday 🤍
+
+I’ve been thinking about what to write to you, and honestly, it took me a while 
+not because I didn’t know what to say, but because there’s so much that you mean to me, 
+there’s so much I’ve said and so I wanted the right words to come this time 😅 
+
+I’m not sure what are you gonna do today but I want you to take a moment for yourself. 
+A moment where you feel light, appreciated, and warm. You deserve that more than you realise. 
+I know you’ve always had this way of carrying so much quietly, of being strong even when things feel heavy, 
+and despite all that I really hope this moment and today reminds you how special you are. 
+
+I just want you to know that knowing you has been one of the most meaningful parts of my life. 
+The conversations, the laughs, the random talks, the late nights, the silences that didn’t feel awkward, all of it matters to me. 
+You matter to me. In ways that are really hard to explain, you’ve left a mark on my life (of being a special person), 
+and I’m genuinely grateful for that. 
+
+I admire your honesty, your strength, your intelligence, your cool attitude, your craziness, 
+your ability to think deeply, and the way you care… even when you don’t always show it out loud. 
+I hope you never stop being exactly who you are, even on days when you doubt yourself. 
+
+Not gonna make it heavy because today isn’t about anything else… just about celebrating you and your birthday. 
+I truly wish you peace, clarity, happiness, and everything that feels right for your heart. Wherever life takes you, I hope it’s gentle with you. 
+
+Have the best birthday Ruchika. 
+Take care of yourself, always 🌻
+`;
+
+let index = 0;
+
+function typeFinalMessage() {
+  if (index < finalMessage.length) {
+    document.getElementById("finalText").innerText += finalMessage.charAt(index);
+    index++;
+    setTimeout(typeFinalMessage, 30);
+  }
+}
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "🤍";
+  heart.style.left = Math.random() * 100 + "vw";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 6000);
+}, 1500);
+
+
+
+</script>
+
+
+</body>
+</html>
